@@ -1,0 +1,21 @@
+{
+  "name": "Evento",
+  "version": "0.1.0",
+  "description": "",
+  "main": "sonda.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fititnt/evento.git"
+  },
+  "author": "Emerson Rocha Luiz",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/fititnt/evento/issues"
+  },
+  "dependencies": {
+    "fbgraph": "~1.0.0"
+  }
+}
