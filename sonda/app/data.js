@@ -1,8 +1,15 @@
 var Client = require('mariasql');
 var c = new Client();
+var Conf = null;
 
 module.exports = {
-  init: function (Conf) {
+  /**
+   * Inicializa
+   *
+   * @param   {Object}   GlobalConf  Configurações globais
+   */
+  init: function (GlobalConf) {
+    Conf = GlobalConf;
     c.connect(Conf.database);
     c.on('connect', function () {
       console.log('Client connected');
@@ -12,6 +19,13 @@ module.exports = {
       console.log('Client closed');
     });
   },
+  /**
+   * Salva no banco de dados lista de eventos obtidos no resultado de busca,
+   * sem detalhes aprofundados
+   *
+   * @param {Function}  cb      Callback para ser chamado ao final
+   * @param {Array}     data    Lista de informações de eventos
+   */
   setSearchList: function (cb, data) {
     var parts = [], query = "REPLACE INTO search_event (id, name, start_time, end_time, location) VALUES ";
     data.forEach(function (item) {
@@ -23,7 +37,7 @@ module.exports = {
               + '")');
     });
     if (parts.length) {
-      //console.log(query + parts.join(", \r\n"));
+      Conf.debug > 1 && console.log("\r\n setSearchList Query:\r\n" + query + parts.join(", \r\n"));
       c.query(query + parts.join(',')).on('end', function () {
         cb && cb(true);
       });
@@ -31,7 +45,13 @@ module.exports = {
       cb && cb(false);
     }
   },
-  setEvent: function (cb, data) {
+  /**
+   * Salva no banco de dados lista de eventos com detalhes específicos
+   *
+   * @param {Function}  cb      Callback para ser chamado ao final
+   * @param {Array}     data    Lista de informações de eventos
+   */
+  setEvents: function (cb, data) {
     var parts = [], query;
     query = "REPLACE INTO `event` (id, name, description, is_date_only, timezone, location, start_time, end_time"
             + ", updated_time, owner_id, owner_name, venue_city, venue_country, venue_latitude, venue_longitude"
@@ -59,7 +79,7 @@ module.exports = {
               + ')');
     });
     if (parts.length) {
-      //console.log(query + parts.join(", \r\n"));
+      Conf.debug > 1 && console.log("\r\n setEvent Query:\r\n" + query + parts.join(", \r\n"));
       c.query(query + parts.join(',')).on('end', function () {
         cb && cb(true);
       });

@@ -10,11 +10,16 @@ var options = {
 
 
 module.exports = {
-  init: function (Conf2) {
-    Conf = Conf2;
+  /**
+   * Inicializa
+   *
+   * @param   {Object}   GlobalConf  Configurações globais
+   */
+  init: function (GlobalConf) {
+    Conf = GlobalConf;
     Data.init(Conf);
 
-    graph.setAccessToken(Conf.facebook.access_token).setVersion('2.2');
+    graph.setAccessToken(Conf.facebook.access_token).setVersion('2.2'); // Fuck 2.3!
   },
   /**
    * Agenda uma função para ser executada após o delay padrão
@@ -36,7 +41,7 @@ module.exports = {
    */
   getSearchList: function (cb, terms) {
     graph.setOptions(options).get("search?type=event&q=" + terms, function (err, res) {
-      console.log(res);
+      Conf.debug && console.log("\r\n App.getSearchList Data:\r\n", res);
 
       Data.setSearchList(console.log, res.data);
 
@@ -44,7 +49,7 @@ module.exports = {
       if (res.data && res.data.length) {
         res.data.forEach(function (item, idx) {
           module.exports.next(function () {
-            module.exports.getEvent(res.data[idx].id);
+            module.exports.getEvent(null, res.data[idx].id);
           }, idx);
         });
       }
@@ -52,12 +57,13 @@ module.exports = {
       cb && cb(res.data);
     });
   },
-  getEvent: function (id) {
+  getEvent: function (cb, id) {
     var url = id + '?fields=name,description,is_date_only,start_time,end_time,updated_time,owner,timezone,venue';
-    console.log(url);
+    //console.log(url);
     graph.setOptions(options).get(url, function (err, res) {
-      console.log(res);
-      Data.setEvent(console.log, [res]);
+      Conf.debug && console.log("\r\n App.getEvent Data:\r\n", res);
+      cb && cb(res);
+      Data.setEvents(console.log, [res]);
     });
   }
 };

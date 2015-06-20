@@ -2,16 +2,18 @@
 // Renomeie para configuration.js
 // Obtenha token em https://developers.facebook.com/tools/explorer
 // @todo obter token de forma automática (fititnt, 2015-06-20 01-
+
 module.exports = {
-  crawlerDelay: 1500,
-  facebook: {
-    access_token: ""
-  },
+  crawlerDelay: 3000,
   database: {
     host: '127.0.0.1',
-    user: 'foo',
-    password: 'bar',
-    db: 'mydb',
+    user: 'root',
+    password: '',
+    db: 'evento',
     multiStatements: true
+  },
+  debug: 2, // Debug level. 0: nenhum; 1 ativo e padrão; 2: pra caralho
+  facebook: {
+    access_token: ""
   }
 };

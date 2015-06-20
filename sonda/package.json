@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "fbgraph": "~1.0.0",
-    "mariasql": "~0.1.23"
+    "mariasql": "~0.1.23",
+    "restify": "~3.0.3"
   }
 }
