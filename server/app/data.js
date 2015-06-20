@@ -18,5 +18,19 @@ module.exports = {
     }).on('close', function (hadError) {
       console.log('Client closed');
     });
+  },
+  getEventos: function (cb) {
+    var query = 'SELECT * FROM event', data = [];
+    c.query(query).on('result', function (res) {
+      res.on('row', function (row) {
+        if (row.raw) {
+          delete row.raw;
+        }
+        data.push(row);
+      });
+    }).on('end', function () {
+      cb(data);
+    });
+    ;
   }
 };

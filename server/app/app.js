@@ -1,10 +1,9 @@
 var Data = require('./data.js');
+var Controller = require('./controller.js');
+var Routes = require('./router.js');
 var restify = require('restify');
 var Server = restify.createServer();
 var Conf = null;
-
-
-
 
 
 module.exports = {
@@ -16,6 +15,9 @@ module.exports = {
   init: function (GlobalConf) {
     Conf = GlobalConf;
     Data.init(Conf);
+    Controller.init(Conf, Data);
+
+    Routes.set(Server, Controller);
 
     Server.use(restify.gzipResponse());
     Server.use(restify.queryParser());
