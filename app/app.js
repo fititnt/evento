@@ -20,9 +20,9 @@ module.exports = {
   getSearchList: function () {
     graph.setOptions(options).get("search?type=event&q=festa porto alegre", function (err, res) {
       console.log(res);
-      
+
       Data.setSearchList(console.log, res.data);
-      //module.exports.getEvent(res.data[0].id);
+      module.exports.getEvent(res.data[0].id);
 
     });
   },
@@ -31,6 +31,7 @@ module.exports = {
     console.log(url);
     graph.setOptions(options).get(url, function (err, res) {
       console.log(res);
+      Data.setEvent(console.log, [res]);
     });
   }
 };
