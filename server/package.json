@@ -1,19 +1,15 @@
 {
-  "name": "Evento",
+  "name": "EventServer",
   "version": "0.1.0",
   "description": "",
-  "main": "sonda.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/fititnt/evento.git"
   },
   "author": "Emerson Rocha Luiz",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "fbgraph": "~1.0.0",
+    "restify": "~3.0.3",
     "mariasql": "~0.1.23"
   }
 }
