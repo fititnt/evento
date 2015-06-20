@@ -1,7 +1,7 @@
 
 // Renomeie para configuration.js
 // Obtenha token em https://developers.facebook.com/tools/explorer
-// @todo obter token de forma automática (fititnt, 2015-06-20 01-
+// @todo obter token de forma automática (fititnt, 2015-06-20 01:00)
 
 module.exports = {
   crawlerDelay: 3000,

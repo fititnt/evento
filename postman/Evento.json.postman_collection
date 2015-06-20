@@ -1,0 +1,41 @@
+{
+	"id": "451f3987-b506-7c67-d00f-a2abe0b7c562",
+	"name": "Evento",
+	"description": "",
+	"order": [
+		"ff5fc192-5efd-33f7-f844-5383f89731db"
+	],
+	"folders": [],
+	"timestamp": 1434788547304,
+	"synced": false,
+	"owner": "11499",
+	"sharedWithTeam": false,
+	"subscribed": false,
+	"remoteLink": "",
+	"public": false,
+	"write": true,
+	"requests": [
+		{
+			"id": "ff5fc192-5efd-33f7-f844-5383f89731db",
+			"headers": "",
+			"url": "{{webserver}}/eventos",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "451f3987-b506-7c67-d00f-a2abe0b7c562",
+			"data": [],
+			"dataMode": "params",
+			"name": "Eventos",
+			"description": "Obtem lista de eventos",
+			"descriptionFormat": "html",
+			"time": 1434788806264,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionOwner": 0,
+			"synced": false
+		}
+	]
+}
