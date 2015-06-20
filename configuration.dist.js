@@ -10,6 +10,7 @@ module.exports = {
     host: '127.0.0.1',
     user: 'foo',
     password: 'bar',
-    db: 'mydb'
+    db: 'mydb',
+    multiStatements: true
   }
 };
