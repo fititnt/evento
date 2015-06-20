@@ -1,7 +1,9 @@
 var graph = require('fbgraph');
 var Conf = require('./configuration.js');
+var Events = [];
+var EventsDb = {};
 
-graph.setAccessToken(Conf.access_token);
+graph.setAccessToken(Conf.facebook.access_token).setVersion('2.2');
 
 var options = {
   timeout: 3000
@@ -9,8 +11,14 @@ var options = {
   , headers: {connection: "keep-alive"}
 };
 
-graph
-        .setOptions(options)
-        .get("search?q=festa porto alegre&type=event", function (err, res) {
-          console.log(res); // { id: '4', name: 'Mark Zuckerberg'... }
-        });
+
+
+graph.setOptions(options).get("search?q=festa porto alegre&type=event", function (err, res) {
+  console.log(res);
+  graph.setOptions(options).get("v2.2/696426020466557", function (err, res) {
+    console.log(res);
+  });
+});
+graph.setOptions(options).get("696426020466557", function (err, res) {
+    console.log(res);
+  });

@@ -16,6 +16,7 @@
     "url": "https://github.com/fititnt/evento/issues"
   },
   "dependencies": {
-    "fbgraph": "~1.0.0"
+    "fbgraph": "~1.0.0",
+    "mariasql": "~0.1.23"
   }
 }
